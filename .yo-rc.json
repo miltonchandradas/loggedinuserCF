@@ -1,0 +1,16 @@
+{
+  "generator-easy-ui5": {
+    "projectname": "mydemo",
+    "namespace": "com.sap",
+    "platform": "Fiori Launchpad on Cloud Foundry",
+    "viewtype": "XML",
+    "viewname": "App",
+    "ui5libs": "Content delivery network (SAPUI5)",
+    "newdir": true,
+    "namespaceURI": "com/sap",
+    "uimodules": [
+      "uimodule"
+    ],
+    "setupCompleted": true
+  }
+}

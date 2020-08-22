@@ -1,0 +1,77 @@
+ID: mydemo
+_schema-version: 3.2.0
+version: 0.0.1
+parameters:
+  enable-parallel-deployments: true
+modules:
+  - name: mydemo
+    type: nodejs
+    path: approuter
+    parameters:
+      disk-quota: 512M
+      memory: 512M
+    requires:
+      - name: mydemo_destination
+      - name: mydemo_html5_repo_runtime
+      - name: mydemo_uaa
+      - name: mydemo_portal
+  - name: webapp_deployer
+    type: com.sap.application.content
+    path: deployer
+    requires:
+      - name: mydemo_html5_repo_host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: uimodule
+          artifacts:
+            - dist/uimodule.zip
+          target-path: resources/
+  - name: mydemo_launchpad_deployer
+    type: com.sap.portal.content
+    path: launchpad
+    deployed-after:
+      - mydemo_deployer
+    requires:
+      - name: mydemo_portal
+      - name: mydemo_html5_repo_host
+      - name: mydemo_uaa
+  - name: uimodule
+    type: html5
+    path: uimodule
+    build-parameters:
+      builder: custom
+      commands:
+        - npm run build:uimodule --prefix ..
+      supported-platforms: []
+resources:
+  - name: mydemo_destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: lite
+      service: destination
+  - name: mydemo_html5_repo_host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: app-host
+      service: html5-apps-repo
+      config:
+        sizeLimit: 2
+  - name: mydemo_html5_repo_runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: app-runtime
+      service: html5-apps-repo
+  - name: mydemo_uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+  - name: mydemo_portal
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: standard
+      service: portal
