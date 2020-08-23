@@ -1,8 +1,15 @@
 {
   "welcomeFile": "/cp.portal",
-  "authenticationMethod": "none",
+  "authenticationMethod": "route",
   "logout": {
     "logoutEndpoint": "/do/logout"
   },
-  "routes": []
+  "routes": [
+    {
+      "source": "^/V2/(.*)$",
+      "authenticationType": "none",
+      "destination": "northwind_api",
+      "csrfProtection": false
+    }
+  ]
 }

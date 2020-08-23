@@ -23,6 +23,15 @@
           "icon": "sap-icon://add"
         }
       }
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/V2/Northwind/Northwind.svc",
+        "type": "OData",
+        "settings": {
+          "localUri": "localService//V2/Northwind/Northwind.svc/metadata.xml"
+        }
+      }
     }
   },
   "sap.ui": {
@@ -66,7 +75,20 @@
         "settings": {
           "bundleName": "com.sap.mydemo.i18n.i18n"
         }
-      }
+      },
+      "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "preload": true
+        },
+        "dataSource": "mainService"
+      },
+      "userModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
     },
     "resources": {
       "css": [
