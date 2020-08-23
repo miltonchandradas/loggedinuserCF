@@ -85,10 +85,7 @@
           "preload": true
         },
         "dataSource": "mainService"
-      },
-      "userModel": {
-				"type": "sap.ui.model.json.JSONModel"
-			}
+      }
     },
     "resources": {
       "css": [

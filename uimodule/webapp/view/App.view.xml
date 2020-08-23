@@ -6,12 +6,6 @@
     <pages>
       <Page title="{i18n>title}">
         <content>
-            <VBox>
-							<Label text="Display Name: {userModel>/decodedJWTToken/given_name} {userModel>/decodedJWTToken/family_name} ({userModel>/decodedJWTToken/user_id})"></Label>
-							<Label text="Email: {userModel>/decodedJWTToken/email}"></Label>
-							<Label text="First Name: {userModel>/decodedJWTToken/given_name}"></Label>
-							<Label text="Last Name: {userModel>/decodedJWTToken/family_name}"></Label>
-						</VBox>
           <List items="{/Products}">
             <StandardListItem title="{ProductName}">
             </StandardListItem>
