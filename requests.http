@@ -1,8 +1,0 @@
-### Custom app router
-GET http://localhost:5000/myext
-
-
-### Northwind destination
-GET http://localhost:1091/V2/Northwind/Northwind.svc
-
-
