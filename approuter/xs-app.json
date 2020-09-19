@@ -10,6 +10,13 @@
       "authenticationType": "none",
       "destination": "northwind_api",
       "csrfProtection": false
+    },
+
+    {
+      "source": "^/sap/opu/odata/sap/(.*)$",
+      "authenticationType": "basic",
+      "destination": "sales_api",
+      "csrfProtection": false
     }
   ]
 }

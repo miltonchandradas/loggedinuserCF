@@ -16,6 +16,11 @@
             <StandardListItem title="{ProductName}">
             </StandardListItem>
           </List>
+
+          <List items="{onpremModel>/Material}">
+            <StandardListItem title="{onpremModel>MaterialText}">
+            </StandardListItem>
+          </List>
         </content>
       </Page>
     </pages>
